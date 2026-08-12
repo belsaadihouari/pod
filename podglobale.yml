@@ -1,0 +1,117 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod1
+  labels:
+    hb.com/comp: "backend"
+    hb.com/version: "v1.3"
+  annotations:
+    gere: "houari"
+spec:
+  volumes:
+    - name: emptydir-volume
+      emptyDir: {}
+  containers:
+    - name: backend
+      image: nginx
+      ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+      volumeMounts:
+        - name: emptydir-volume
+          mountPath: /ines/hobi
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 3
+        successThreshold: 1
+        failureThreshold: 3
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 3
+        successThreshold: 3
+        failureThreshold: 3
+      startupProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 3
+        successThreshold: 1
+        failureThreshold: 3
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "64Mi"
+        limits:
+          cpu: "500m"
+          memory: "128Mi"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod2
+  labels:
+    hb.com/comp: "frontend"
+    hb.com/version: "v2.3"
+  annotations:
+    gere: mohamed
+spec:
+  volumes:
+    - name: emptydir2-volume
+      emptyDir: {}
+  containers:
+    - name: frontend
+      image: nginx
+      ports:
+        - name: http2
+          containerPort: 80
+          protocol: TCP
+      volumeMounts:
+        - name: emptydir2-volume
+          mountPath: /ines2/hobi
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 3
+        successThreshold: 1
+        failureThreshold: 3
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 3
+        successThreshold: 3
+        failureThreshold: 3
+      startupProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 3
+        successThreshold: 1
+        failureThreshold: 3
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "64Mi"
+        limits:
+          cpu: "500m"
+          memory: "128Mi"
+
+
