@@ -4,7 +4,7 @@ metadata:
   name: myserviceloadbalancer
 spec:
   selector:
-    app: frontend
+    app: frontend1
   ports:
     - port: 80
       targetPort: 80

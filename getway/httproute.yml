@@ -1,0 +1,32 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: my-app-route
+  namespace: default
+spec:
+  parentRefs:
+    - name: my-gateway
+  rules:
+    # 1. Requêtes vers /bin : le filtre réécrit la route en "/" avant de l'envoyer au Service 1
+    - matches:
+        - path:
+            type: Exact
+            value: /bin
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplaceFullPath
+              replaceFullPath: /
+      backendRefs:
+        - name: myserviceclusterip1
+          port: 80
+
+    # 2. Tout le reste du trafic "/" va vers le Service 2
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: myserviceclusterip2
+          port: 80
