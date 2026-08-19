@@ -15,7 +15,7 @@ spec:
         app: frontend
     spec:
       containers:
-          - image: belsaadi/nginx-vim-server2:latest
+          - image: 
             name: mypod
             ports:
               - name: http

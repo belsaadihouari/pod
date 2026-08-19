@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: myservicedeploy
+  name: myservice
   labels:
-    app: frontend
+    apps: myservice
 spec:
   selector:
-    app: frontend
+    apps: frontend
   ports:
     - port: 80
       targetPort: 80
