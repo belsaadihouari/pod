@@ -4,6 +4,7 @@ metadata:
   name: sample-deployment
   labels:
     app: sample-app
+    
 spec:
   replicas: 3  # Number of desired pod replicas
   selector:
@@ -34,7 +35,7 @@ spec:
               mountPath: /work
       containers:
       - name: sample-container
-        image: nginx:1.28.2  # Container image
+        image: nginx:1.30.2  # Container image
         ports:
         - containerPort: 80  # Port exposed by the container
         env:
