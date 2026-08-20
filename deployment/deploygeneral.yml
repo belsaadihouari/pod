@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: sample-deployment
   labels:
+
   
     app: sample-app
 
