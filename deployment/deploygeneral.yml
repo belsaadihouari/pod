@@ -8,6 +8,12 @@ metadata:
     
 
 
+
+
+
+
+
+
     
 spec:
   replicas: 3  # Number of desired pod replicas
