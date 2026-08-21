@@ -4,6 +4,8 @@ metadata:
   name: sample-deployment
   labels:
     app: sample-app
+    
+    
 spec:
   replicas: 3  # Number of desired pod replicas
   selector:
