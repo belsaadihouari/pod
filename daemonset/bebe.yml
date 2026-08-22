@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: mydaemonset
+  labels:
+    apps: mydaemonset
+spec:
+  selector:
+    matchLabels:
+      apps: fluent
+  template:
+    metadata: 
+      name: mypod
+      labels:
+        apps: fluent
+    spec:
+      containers:
+        - name: mycontainer
+          image: fluent/fluentd:v1.17.1-1.0
+          command:
+            - sh
+            - -c
+            - |
+              echo "traitement en cours ......"
+              sleep 20
+              echo "traitement Terminé "
+      nodeSelector:
+        environment: "prod"

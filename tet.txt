@@ -1,0 +1,14 @@
+total 11
+drwxrwxrwx 1 houari houari  512 Aug 21 22:57 daemonset
+drwxrwxrwx 1 houari houari  512 Aug 19 20:33 deployment
+drwxrwxrwx 1 houari houari  512 Aug 18 00:11 getway
+-rwxrwxrwx 1 houari houari  486 Aug 12 20:31 livenessprobe.yml
+-rwxrwxrwx 1 houari houari  515 Aug  8 22:32 pod.yml
+-rwxrwxrwx 1 houari houari 2463 Aug 11 22:13 podglobale.yml
+-rwxrwxrwx 1 houari houari  506 Aug 13 22:38 podmyimage.yml
+-rwxrwxrwx 1 houari houari  427 Aug  9 23:06 readinessprobe.yml
+-rwxrwxrwx 1 houari houari 1024 Aug 10 21:41 resources.yml
+drwxrwxrwx 1 houari houari  512 Aug 19 20:29 service
+-rwxrwxrwx 1 houari houari  462 Aug  9 23:25 startupprobe.yml
+-rwxrwxrwx 1 houari houari    0 Aug 21 23:11 tet.txt
+-rwxrwxrwx 1 houari houari  558 Aug 17 19:39 volumes.yml
