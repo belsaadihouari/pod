@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysamplejob
+spec:
+  template:
+    spec:
+      containers:
+        - name: myjob
+          image: busybox
+          command:
+          - sh
+          - -c
+          - |
+            echo "traitement en cours ...."
+            sleep 40
+            echo "traitement Terminé"
+      restartPolicy: Never
+  backoffLimit: 4    

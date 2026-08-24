@@ -7,15 +7,26 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: fluent
+      app: container-daemonset
   template:
     metadata:
-      name: mydaemonsetcpontainer
+      name: mycontainer
       labels:
-        app: fluent
+        app: container-daemonset
     spec:
-      nodeSelector:
-        environment: "prod"
+    
       containers:
         - name: mycontainer
-          image: fluent/fluentd:v1.17.1-1.0
+          image: busybox
+          command:
+          - sh
+          - -c
+          - |
+            sleep 30
+            echo "Traitement en cours....."
+            sleep 50
+            echo "Traitement Terminé"
+            sleep infinity
+      nodeSelector:
+        environment: "test"
+ 

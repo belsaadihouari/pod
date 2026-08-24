@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: trois-taches
+spec:
+  completions: 3
+  parallelism: 1
+  completionMode: Indexed  
+  template:
+    spec:
+      restartPolicy: Never
+
+      containers:
+        - name: worker
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              case "$JOB_COMPLETION_INDEX" in
+                0)
+                  echo "Tâche 1 : créer un fichier"
+                  touch /tmp/fichier.txt
+                  ;;
+                1)
+                  echo "Tâche 2 : faire un calcul"
+                  echo "10 + 20 = 30"
+                  ;;
+                2)
+                  echo "Tâche 3 : afficher un message"
+                  echo "Bonjour Kubernetes"
+                  ;;
+              esac
