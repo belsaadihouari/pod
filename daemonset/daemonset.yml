@@ -15,6 +15,7 @@ spec:
         app: container-daemonset
     spec:
     
+    
       containers:
         - name: mycontainer
           image: busybox
