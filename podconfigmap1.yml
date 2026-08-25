@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: mycontainer
+      image: busybox
+      command:
+        - sh
+        - -c
+        - |
+          echo "NAME = $NAME"
+          echo "BASE_URL + $BASE_URL"
+          sleep 50
+      env:
+        - name: NAME
+          valueFrom:
+            configMapKeyRef:
+              name: myconfigmap
+              key: NAME
+        - name: BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: myconfigmap
+              key: BASE_URL

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod2
+spec:
+  containers:
+    - name: podcontainer
+      image: busybox
+      envFrom:
+        - configMapRef:
+            name: myconfigmap1
+      command:
+        - sh
+        - -c
+        - |
+          echo "=================================="
+          echo "meine Parametres sind:"
+          echo "$APP_NAME"
+          echo "$APP_ENV"
+          echo "$APP_PORT"
+          sleep 3600
