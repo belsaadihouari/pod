@@ -5,6 +5,8 @@ metadata:
 
 
 
+
+
   name: myconfigmap
   namespace: default
 data: 
