@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
 
 
+
+
   name: myconfigmap
   namespace: default
 data: 
