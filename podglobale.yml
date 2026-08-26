@@ -8,7 +8,10 @@ metadata:
   annotations:
     gere: "houari"
 
-    
+
+
+
+
 spec:
   volumes:
     - name: emptydir-volume
