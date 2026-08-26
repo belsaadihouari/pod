@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pod3
+  name: pod3
+spec:
+  containers:
+  - image: busybox
+    name: pod3
+    resources: {}
+    command: ['sh','-c','sleep infinity']
+    volumeMounts:
+      - name: myconfigvolume
+        mountPath: /bimo/tart
+  volumes:
+    - name: myconfigvolume
+      configMap:
+        name: myconfigmap      
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

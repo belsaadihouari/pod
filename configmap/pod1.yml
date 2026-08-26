@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pod1
+  name: pod1
+spec:
+  containers:
+  - image: busybox
+    name: pod1
+    command: [ 'sh','-c','sleep infinity']
+    env:
+      - name: user_name
+        valueFrom:
+          configMapKeyRef:
+            name: myconfigmap
+            key: user_name
+      - name: port
+        valueFrom:
+          configMapKeyRef:
+            name: myconfigmap
+            key: port
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

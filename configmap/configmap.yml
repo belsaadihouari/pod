@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: myconfigmap
 data:
-  USER_NAME: "belsaadi ines karmen"
-  PORT: "8080"
+  user_name: "ines karmen hobiiiiiiii"
+  port: "8080"

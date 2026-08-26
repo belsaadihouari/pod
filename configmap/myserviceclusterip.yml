@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: myserviceclusterip
+  name: myserviceclusterip
+spec:
+  ports:
+  - name: 8080-8080
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: pod4
+  type: ClusterIP
+status:
+  loadBalancer: {}
