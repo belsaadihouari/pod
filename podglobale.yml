@@ -7,11 +7,6 @@ metadata:
     hb.com/version: "v1.3"
   annotations:
     gere: "houari"
-
-
-
-
-
 AWSTemplateFormatVersion: "2010-09-09"
 Conditions:
 spec:
