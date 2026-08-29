@@ -22,16 +22,6 @@ Conditions:
 
 
 
-
-
-
-
-
-
-
-
-
-
 spec:
   volumes:
     - name: emptydir-volume
