@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: object-counts
-spec:
-  hard:
-    secrets: "0"
-    pods: "1"
