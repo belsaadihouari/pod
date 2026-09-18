@@ -1,50 +1,44 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  creationTimestamp: null
+  creationTimestamp: "2026-09-17T21:57:32Z"
+  generation: 1
   labels:
-    run: mypod
-  name: mypod
+    app: mydeploy
+  name: mydeploy
+  namespace: default
+  resourceVersion: "282757"
+  uid: 8b3a1ba5-4468-4b3a-ac18-87fa0e20a456
 spec:
-  initContainers:
-  - image: busybox
-    name: myinitcontainer
-    command:
-    - sh
-    - -c
-    - echo "hello iness" > /usr/share/nginx/html/index.html
-    volumeMounts:
-      - name: myvolume
-        mountPath: /usr/share/nginx/html
-  containers:
-  - image: nginx
-    name: mypod
-    ports:
-      - containerPort: 80
-    volumeMounts:
-      - name: myvolume
-        mountPath: /usr/share/nginx/html
-    livenessProbe:
-      httpGet:
-        path: /
-        port: 80
-      initialDelaySeconds: 10
-      periodSeconds: 5
-      timeoutSeconds: 2
-      failureThreshold: 3
-      successThreshold: 1
-    readinessProbe:
-      httpGet:
-        path: /
-        port: 80
-      initialDelaySeconds: 10
-      periodSeconds: 5
-      timeoutSeconds: 2
-      failureThreshold: 3
-      successThreshold: 1
-  volumes:
-    - name: myvolume
-      emptyDir: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
+  progressDeadlineSeconds: 600
+  replicas: 5
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: mydeploy
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeploy
+    spec:
+      serviceAccountName: myserviceaccount
+      automountServiceAccountToken: false
+      containers:
+      - image: belsaadi/nginx-vim-server2
+        imagePullPolicy: Always
+        name: nginx-vim-server2
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
 status: {}
