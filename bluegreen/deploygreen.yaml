@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mydeploygreen
+  name: mydeploygreen
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mydeploygreen
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeploygreen
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - image: docker.io/belsaadi/nginx-vim-server1
+        name: nginx-vim-server1
+        resources: {}
+status: {}

@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  creationTimestamp: "2026-09-17T22:00:07Z"
-  name: myserviceaccount
-  namespace: default
-  uid: 3d20af74-2ce1-470b-b085-a04d45f71452
-imagePullSecrets:
-  - name: mysecret
