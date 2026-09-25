@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: multi-worker-job
+spec:
+  completions: 6
+  parallelism: 2
+  activeDeadlineSeconds: 60
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: busybox:1.35
+        name: multi-worker-job
+        command: ['sh','-c',"echo 'Processing batch item...' && sleep 5"]
+        resources: {}
+      restartPolicy: Never
+status: {}

@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  namespace: batch-jobs
+  name: pi-job
+spec:
+  backoffLimit: 3
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: perl:5.34.0
+        name: pi-job
+        command:
+          - perl
+          - -Mbignum=bpi
+          - -wle
+          - 'print bpi(2000)'
+        resources: {}
+      restartPolicy: Never
+status: {}
