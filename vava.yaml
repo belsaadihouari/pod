@@ -1,0 +1,33 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+# ingresses.networking.k8s.io "simple" was not valid:
+# * <nil>: Invalid value: "The edited file failed validation": yaml: line 15: did not find expected key
+#
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress2
+  namespace: app-routing
+spec:
+  defaultBackend:
+    service:
+      name: ines
+      port:
+        number: 80
+
+  ingressClassName: nginx
+
+  rules:
+  - http:
+      paths:
+      - path: /about
+        pathType: Prefix
+        backend:
+          service:
+            name: api-svc
+            port:
+              number: 80
+status:
+  loadBalancer: {}
