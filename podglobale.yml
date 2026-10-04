@@ -183,25 +183,7 @@ metadata:
 
 
 
-Description: 
-
-Mappings:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Description:
 
     gere: "houari"
 AWSTemplateFormatVersion: "2010-09-09"
