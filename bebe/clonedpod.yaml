@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mypod2
+  name: mypod2
+spec:
+  containers:
+  - image: belsaadi/voll1
+    name: mypod2
+    volumeMounts:
+      - name: myvolume2
+        mountPath: /data2
+  volumes:
+    - name: myvolume2
+      persistentVolumeClaim:
+        claimName: cloned-pvc
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
